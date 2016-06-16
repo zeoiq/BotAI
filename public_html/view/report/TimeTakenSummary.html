@@ -1,0 +1,39 @@
+                <div class="panel-body">                     
+                    <div google-chart chart="iisLogStatusColChart" style="height:600px; width:100%;"></div>
+                    <div google-chart chart="iisLogStatusColChart1" style="height:600px; width:100%;"></div>
+                    <table st-table="itemIISLogStatus" st-safe-src="iisLogStatusCollection" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="5"></th>
+                        </tr>                   
+                        <tr>
+                            <th colspan="5"><input st-search="" class="form-control" placeholder="Search ..." type="text"/></th>
+                        </tr>                   
+                        <tr>
+                            <th st-sort="apiLink">API Link</th>
+                            <th st-sort="averageTimeTaken">Average Time Taken</th>
+                            <th st-sort="maxTimeTaken">Max Time Taken</th>
+                            <th st-sort="minTimeTaken">Min Time Taken</th>
+                            <th></th>
+                        </tr>			
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in itemIISLogStatus">                
+                            <td>{{row.apiLink}}</td>
+                            <td>{{row.averageTimeTaken}}</td>
+                            <td>{{row.maxTimeTaken}}</td>
+                            <td>{{row.minTimeTaken}}</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-center">
+                                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>
+                            </td>
+                        </tr>
+                        </tfoot> 
+                    </table>
+                </div>

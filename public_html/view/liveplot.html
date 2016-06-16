@@ -1,0 +1,49 @@
+<div ng-controller="botLivePlotController" layout="column" ng-cloak>
+    <md-toolbar class="md-accent md-hue-3">
+            <div class="md-toolbar-tools">
+                <img ng-src="assets/img/default.png" class="md-avatar" alt="Twitter" height="60" />
+                <h2 class="md-flex">Autobot</h2>
+                <span flex></span>
+                <span flex><timer autostart="false" countdown="countdownTimer" max-time-unit="'minute'" interval="intervals" finish-callback="callbackTimerFinished()">Time to refresh : {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+                </span>
+                <span my-current-time="format"></span>
+            </div>
+    </md-toolbar>
+    <md-content layout="row" flex layout-padding>        
+        <div flex>
+            <a ng-click="getFB()" ng-href="" ><img ng-src="assets/img/fb-login.jpg" width="151" height="24"></a>
+            <a ng-click="getTwitter()" ng-href="" ><img ng-src="assets/img/twitter-login.png" width="151" height="24"></a>
+            <a ng-click="getIISLog()" ng-href="" ><img ng-src="assets/img/microsoft-iis.png" width="151" height="24"></a>
+            <a ng-click="getR()" ng-href="" ><img ng-src="assets/img/rstudio.png" width="151" height="24"></a>
+            <a ng-click="liveplot()" ng-href="" ><img ng-src="assets/img/linegraph.png" width="151" height="24"></a>
+            <a ng-click="insightAI()" ng-href="" ><img ng-src="assets/img/default.png" width="151" height="24"></a>
+            <p></p>
+            <div class="panel panel-primary">
+                <div>
+                    <ul>
+                      <li ng-repeat="message in messages track by $index">{{message}}</li>
+                    </ul>
+
+                    <form ng-submit="sendMessage()">
+                      <input type="text" ng-model="messageText" placeholder="Type your message here" />
+                      <input type="submit" value="Send" />
+                    </form>
+                </div>
+                <div class="panel-heading">
+                    Live Chart
+                </div>
+                <div class="panel-body">        
+                    <div class="row">
+                        <div class="col-md-12">
+                          <nvd3 options="options" data="data" class="with-3d-shadow with-transitions"></nvd3>
+                        </div>
+      
+                        <div class="col-md-12">
+                          <nvd3 options="optionsBar" data="dataBar" class="with-3d-shadow with-transitions"></nvd3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </md-content> 
+</div>

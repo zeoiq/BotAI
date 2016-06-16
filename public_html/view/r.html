@@ -1,0 +1,39 @@
+<div ng-controller="botIISLogController" layout="column" ng-cloak>
+    <md-toolbar class="md-accent">
+            <div class="md-toolbar-tools">
+                <img ng-src="assets/img/default.png" class="md-avatar" alt="Twitter" height="60" />
+                <h2 class="md-flex">Autobot</h2>
+                <span flex></span>
+                <span flex><timer autostart="false" countdown="countdownTimer" max-time-unit="'minute'" interval="intervals" finish-callback="callbackTimerFinished()">Time to refresh : {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+                </span>
+                <span my-current-time="format"></span>
+            </div>
+    </md-toolbar>
+    <md-content layout="row" flex layout-padding>        
+        <div flex>
+            <a ng-click="getFB()" ng-href="" ><img ng-src="assets/img/fb-login.jpg" width="151" height="24"></a>
+            <a ng-click="getTwitter()" ng-href="" ><img ng-src="assets/img/twitter-login.png" width="151" height="24"></a>
+            <a ng-click="getIISLog()" ng-href="" ><img ng-src="assets/img/microsoft-iis.png" width="151" height="24"></a>
+            <a ng-click="getR()" ng-href="" ><img ng-src="assets/img/rstudio.png" width="151" height="24"></a>
+            <a ng-click="liveplot()" ng-href="" ><img ng-src="assets/img/linegraph.png" width="151" height="24"></a>
+            <p></p>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Rstudio Chart
+                </div>
+                <div>        
+                    <iframe sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+                     src="https://demo.ocpu.io/appdemo/www/"
+                     width="100%" height="650"
+                     >
+                      <p>
+                        <a href="https://demo.ocpu.io/appdemo/www/">
+                          Fallback link for browsers that, unlikely, don't support frames
+                        </a>
+                      </p>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </md-content> 
+</div>

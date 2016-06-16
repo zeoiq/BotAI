@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>botAI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        
+        <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous"> -->
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/js/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
+        <link rel="stylesheet" href="assets/css/style.min.css"> -->
+        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.css"> -->
+        <!--<link rel="stylesheet" href="assets/css/normalize.css">
+        <link rel="stylesheet" href="assets/fonts/vicons/vicons-font.css" />
+        <link rel="stylesheet" href="assets/css/base.css">
+        <link rel="stylesheet" href="assets/css/send.css">
+        <link rel="stylesheet" href="assets/css/chat.css"> -->
+        <link rel="stylesheet" href="assets/js/bower_components/epoch/dist/css/epoch.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script> 
+        
+        <!-- AngularJs Dependencies -->        
+        <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>       
+                
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-touch.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+        
+        <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha256-KXn5puMvxCw+dAYznun+drMdG1IFl3agK0p/pqT9KAo= sha512-2e8qq0ETcfWRI4HJBzQiA3UoyFk6tbNyG+qSaIBZLyW9Xf3sWZHN/lxe9fTh1U45DpPf07yj94KsUHHWe4Yk1A==" crossorigin="anonymous"></script> -->
+        <link rel="stylesheet" href="assets/js/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.min.js" type="text/javascript"></script>
+        <script src="assets/js/bower_components/momentjs/min/moment.min.js"></script>
+        <script src="assets/js/bower_components/momentjs/min/locales.min.js"></script>
+        <script src="assets/js/bower_components/humanize-duration/humanize-duration.js"></script>
+        <script src="assets/js/bower_components/angular-timer/dist/angular-timer.js"></script>
+        <script src="assets/js/bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+        <script src="assets/js/scrollglue.js" type="text/javascript"></script>
+        <!--<script src="assets/js/TweenMax.min.js" type="text/javascript"></script>
+        <script src="assets/js/send.js" type="text/javascript"></script>
+        <script src="assets/js/chat.js" type="text/javascript"></script> -->
+
+        <script src="//cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.js"></script> 
+        <script src="assets/js/bower_components/d3/d3.min.js"></script>
+        <script src="assets/js/bower_components/epoch/dist/js/epoch.min.js"></script>
+        <script src="assets/js/bower_components/ng-epoch/ng-epoch.js"></script>-->
+        
+        <!-- build:js js/app.js -->
+        <script src="app/app.js" defer></script> 
+        <script src="app/components/data.js" defer></script>
+        <script src="app/components/twittercontroller.js" defer></script>
+        <script src="app/components/fbcontroller.js" defer></script>
+        <script src="app/components/iislogcontroller.js" defer></script>
+        <script src="app/components/liveplotcontroller.js" defer></script>      
+        <script src="app/components/insightaicontroller.js" defer></script>     
+        <script src="app/components/settingservice.js" defer></script>
+        <script src="app/components/autobotservice.js" defer></script>
+        <script src="app/components/autobotscrapeservice.js" defer></script>
+        <script src="app/components/iislogservice.js" defer></script>
+        <script src="app/components/currentTime.directive.js" defer></script>
+        <!-- endbuild -->
+        <!--<script src="dist/js/app.min.js" type="text/javascript"></script> -->
+    </head>
+    <body ng-app="autobotSearch">
+        <div ng-view="" layout="column"></div>
+    </body>
+</html>

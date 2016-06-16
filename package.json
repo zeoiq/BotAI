@@ -1,0 +1,51 @@
+{
+  "name": "Autobot",
+  "engines": {
+    "node": ">=0.12.7"
+  },
+  "version": "0.0.2",
+  "description": "Autobot",
+  "private": true,
+  "scripts": {
+    "start": "node server.js",
+    "monitor": "nodemon server.js",
+    "deploy": "gcloud preview app deploy app.yaml"
+  },
+  "main": "server.js",
+  "author": "wsy",
+  "dependencies": {
+    "async": "latest",
+    "body-parser": "latest",
+    "cheerio": "latest",
+    "express": "latest",
+    "http": "latest",
+    "moment": "latest",
+    "mongoose": "latest",
+    "node-wit": "^3.3.2",
+    "moment-timezone": "latest",
+    "passport": "latest",
+    "passport-facebook": "latest",
+    "request": "latest",
+    "sockjs": "latest",
+    "x-ray": "latest",
+    "nodemailer": "^0.7.1"
+  },
+  "devDependencies": {
+    "grunt": "latest",
+    "matchdep": "latest",
+    "grunt-contrib-jshint": "latest",
+    "jshint-stylish": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-less": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-htmlmin": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-filerev": "latest",
+    "grunt-usemin": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-nodemon": "latest",
+    "grunt-concurrent": "latest"
+  }
+}

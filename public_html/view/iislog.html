@@ -1,0 +1,77 @@
+<div ng-controller="botIISLogController" ng-init="load_iislogstatus_lib()" layout="column" ng-cloak>
+    <md-toolbar class="md-warn">
+            <div class="md-toolbar-tools">
+                <img ng-src="assets/img/default.png" class="md-avatar" alt="Twitter" height="60" />
+                <h2 class="md-flex">Autobot</h2>
+                <span flex></span>
+                <span flex><timer autostart="false" countdown="countdownTimer" max-time-unit="'minute'" interval="intervals" finish-callback="callbackTimerFinished()">Time to refresh : {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+                </span>
+                <span my-current-time="format"></span>
+            </div>
+    </md-toolbar>
+    <md-content layout="row" flex layout-padding>        
+        <div flex>
+            <a ng-click="getFB()" ng-href="" ><img ng-src="assets/img/fb-login.jpg" width="151" height="24"></a>
+            <a ng-click="getTwitter()" ng-href="" ><img ng-src="assets/img/twitter-login.png" width="151" height="24"></a>
+            <a ng-click="getIISLog()" ng-href="" ><img ng-src="assets/img/microsoft-iis.png" width="151" height="24"></a>
+            <a ng-click="getR()" ng-href="" ><img ng-src="assets/img/rstudio.png" width="151" height="24"></a>
+            <a ng-click="liveplot()" ng-href="" ><img ng-src="assets/img/linegraph.png" width="151" height="24"></a>
+            <p></p>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    Summary Report
+                </div>
+                <div>        
+                    <md-content>
+                            <form name="projectForm"> 
+                                <div class="tabsdemoDynamicHeight">                        
+                                    <md-tabs md-dynamic-height="" md-border-bottom="">
+                                      <md-tab id="tab1">            
+                                          <md-tab-label>No of Hits of Error Code By Date Time</md-tab-label>
+                                          <md-tab-body>                                  
+                                             <md-card>                                   
+                                                 <div class="col-md-12">
+                                                     <div class="panel panel-primary" ng-include="'view/report/ErrorStatusByDateTimeSummary.html'"></div>
+                                                 </div> 
+                                             </md-card>
+                                          </md-tab-body>                                          
+                                      </md-tab>
+                                      <md-tab id="tab2">
+                                          <md-tab-label>Status Code Summary</md-tab-label>
+                                          <md-tab-body>                                  
+                                             <md-card>                                   
+                                                 <div class="col-md-12">
+                                                     <div class="panel panel-primary" ng-include="'view/report/ErrorStatusSummary.html'"></div>
+                                                 </div> 
+                                             </md-card>
+                                          </md-tab-body>                            
+                                      </md-tab>
+                                      <md-tab id="tab3">
+                                          <md-tab-label>API Time Taken Summary</md-tab-label>
+                                          <md-tab-body>                                  
+                                             <md-card>                                   
+                                                 <div class="col-md-12">
+                                                     <div class="panel panel-primary" ng-include="'view/report/TimeTakenSummary.html'"></div>
+                                                 </div> 
+                                             </md-card>
+                                          </md-tab-body>
+                                      </md-tab>
+                                      <md-tab id="tab4">
+                                          <md-tab-label>No of Hits of API Summary</md-tab-label>
+                                          <md-tab-body>                                  
+                                            <md-card>                                   
+                                                 <div class="col-md-12">
+                                                     <div class="panel panel-info" ng-include="'view/report/NoOfHitsAPISummary.html'"></div>
+                                                 </div> 
+                                            </md-card>
+                                          </md-tab-body>
+                                      </md-tab>
+                                    </md-tabs>
+                                </div> 
+                            </form>
+                        </md-content>
+                </div>
+            </div>
+        </div>
+    </md-content> 
+</div>

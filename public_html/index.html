@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>botAI</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="assets/img/favicon.ico">
+        
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="assets/js/bower_components/bootstrap/dist/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+        <link rel="stylesheet" type="text/css" href="assets/css/timeline.css"> 
+        <link rel="stylesheet" href="assets/css/style.min.css"> -->
+        <!--<link rel="stylesheet" href="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.css"> -->
+        <!--<link rel="stylesheet" href="assets/css/normalize.css">-->
+        <link rel="stylesheet" href="assets/fonts/vicons/vicons-font.css" />
+        <!--<link rel="stylesheet" href="assets/css/base.css">-->
+        <link rel="stylesheet" href="assets/css/send.css">
+        <link rel="stylesheet" href="assets/css/chat.css">
+        <link rel="stylesheet" href="assets/js/bower_components/epoch/dist/css/epoch.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.css"/>
+        
+        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script> 
+        
+        <!-- AngularJs Dependencies -->        
+        <script src="//cdn.jsdelivr.net/hammerjs/2.0.4/hammer.min.js"></script>       
+                
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-resource.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-touch.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-sanitize.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-route.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular-cookies.min.js"></script>
+        
+        <link rel="stylesheet" href="assets/js/bower_components/bootstrap/dist/js/bootstrap.min.js">
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.7/angular-material.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-google-chart/0.1.0/ng-google-chart.min.js" type="text/javascript"></script>
+        <script src="assets/js/bower_components/momentjs/min/moment.min.js"></script>
+        <script src="assets/js/bower_components/momentjs/min/locales.min.js"></script>
+        <script src="assets/js/bower_components/humanize-duration/humanize-duration.js"></script>
+        <script src="assets/js/bower_components/angular-timer/dist/angular-timer.js"></script>
+        <script src="assets/js/bower_components/angular-smart-table/dist/smart-table.min.js"></script>
+        <script src="assets/js/scrollglue.js" type="text/javascript"></script>
+        <script src="assets/js/TweenMax.min.js" type="text/javascript"></script>
+        <!--<script src="assets/js/send.js" type="text/javascript"></script>
+        <script src="assets/js/chat.js" type="text/javascript"></script>-->
+
+        <script src="//cdn.jsdelivr.net/sockjs/1.0.1/sockjs.min.js"></script>
+        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/nvd3/1.8.1/nv.d3.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-nvd3/1.0.5/angular-nvd3.min.js"></script>
+        <!--<script src="https://cdn.jsdelivr.net/epoch/0.8.4/epoch.min.js"></script> 
+        <script src="assets/js/bower_components/d3/d3.min.js"></script>
+        <script src="assets/js/bower_components/epoch/dist/js/epoch.min.js"></script>
+        <script src="assets/js/bower_components/ng-epoch/ng-epoch.js"></script>-->
+        
+        <!-- build:js js/app.js -->
+        <script src="app/app.js" defer></script> 
+        <script src="app/components/data.js" defer></script>
+        <script src="app/components/twittercontroller.js" defer></script>
+        <script src="app/components/fbcontroller.js" defer></script>
+        <script src="app/components/iislogcontroller.js" defer></script>
+        <script src="app/components/liveplotcontroller.js" defer></script>      
+        <script src="app/components/insightaicontroller.js" defer></script>     
+        <script src="app/components/settingservice.js" defer></script>
+        <script src="app/components/autobotservice.js" defer></script>
+        <script src="app/components/autobotscrapeservice.js" defer></script>
+        <script src="app/components/iislogservice.js" defer></script>
+        <script src="app/components/currentTime.directive.js" defer></script>
+        <!-- endbuild -->
+        <!--<script src="dist/js/app.min.js" type="text/javascript"></script> -->
+    </head>
+    <body ng-app="autobotSearch">  
+        <div layout="column" class="bodyback">
+            <div ng-controller="botInsightAIController" layout="column" ng-cloak>
+                <md-toolbar class="md-hue-2">
+                    <div class="md-toolbar-tools">
+                        <img ng-src="assets/svg-loaders/rings.svg" class="md-avatar" alt="AI" height="60" ng-click="clearCacheData()"/>
+                        <h2 class="md-flex"><font face="verdana" color="#FF8C00">Insight</font></h2>
+                        <h2 class="md-flex"><font face="verdana" color="#F1C40F">.AI</font></h2>
+                    </div>
+                </md-toolbar>    
+                <div layout="row" layout-align="center center">
+                    <md-content flex="15" class="bodyback">
+                    <div >
+                        <div class="send">
+                            <div class="send-indicator">
+                                <div class="send-indicator-dot"></div>
+                                <div class="send-indicator-dot"></div>
+                                <div class="send-indicator-dot"></div>
+                                <div class="send-indicator-dot"></div>
+                            </div>
+                            <button class="send-button">
+                                <div class="sent-bg"></div>
+                                    <img src="assets/svg-loaders/puff.svg" class="md-card-image send-icon" alt="">                                   
+                                    <i class="fa fa-check sent-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100">
+                    <defs>
+                        <filter id="goo">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                        <feComposite in="SourceGraphic" in2="goo" operator="atop"/>
+                        </filter>
+                        <filter id="goo-no-comp">
+                        <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+                        <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9" result="goo" />
+                        </filter>
+                    </defs>
+                    </svg>
+                    </md-content>
+                    <md-content flex="55" class="bodyback">      
+                        <!--<md-tabs md-dynamic-height md-border-bottom class="bodyback">                
+                            <md-tab label="a"> -->
+                            <md-card class="bodyback">
+                                <md-card-header>
+                                <md-card-avatar>
+                                    <img ng-src="assets/img/maxis.jpeg" class="md-avatar-icon" alt="img"/>
+                                </md-card-avatar>
+                                <md-card-header-text>
+                                    <span class="md-title"><font face="verdana" color="#3498DB">Maxis</font></span>
+                                    <span class="md-subhead"><font face="verdana" color="black">Tweets & Facebook Visitor Posts</font></span>
+                                </md-card-header-text>
+                                </md-card-header>
+                            <md-card-content>
+                                <md-content layout="row" layout-wrap layout-align="center start" style="height: 420px;" class="bodyback">
+                                <div layout="column">
+                                <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                                    <md-button class="md-primary" ng-click="exportTweetsReplies()" ng-href="" target="_blank">Export Tweets & Replies</md-button>
+                                </section> -->
+                                <fieldset  data-ng-repeat="dataTweetReplies in tweetReplies">        
+                                    <md-card style="background-color: #2980B9;" style="width: 300px;">
+                                    <md-card-header>
+                                        <md-card-avatar>
+                                            <img ng-src="{{ ::dataTweetReplies.tweetDetails[0].avatar }}" class="md-card-image" alt="img"/>
+                                        </md-card-avatar>
+                                        <md-card-header-text>
+                                        <span class="md-title"><font face="verdana">{{ ::dataTweetReplies.tweetDetails[0].fullname }}</font></span>
+                                        <span class="md-subhead"><font face="verdana">{{ ::dataTweetReplies.tweetDetails[0].time }}</font></span>
+                                        </md-card-header-text>
+                                    </md-card-header>
+                                    <!--<img ng-src="{{data.image}}" class="md-card-image">
+                                    <md-card-title>
+                                        <md-card-title-text>
+                                        <span class="md-headline">Tweet</span>
+                                        </md-card-title-text>
+                                    </md-card-title> -->                          
+                                    <md-card-content>
+                                        <p>
+                                        <font face="verdana">{{ ::dataTweetReplies.tweet}}</font>
+                                        </p><p>&nbsp;
+                                        </p>
+                                    </md-card-content>                          
+                                    <div layout="column">
+                                        <fieldset  data-ng-repeat="AIReplies in dataTweetReplies.AIReplies" > 
+                                        <md-card>
+                                            <div style="background-color: #2C3E50;">
+                                                <md-card-header>
+                                                    <md-card-avatar>
+                                                        <img src="assets/svg-loaders/rings.svg" class="md-card-image" alt="">
+                                                        <!--<img ng-src="{{ ::AIReplies.avatar }}" class="md-card-image" alt="img"/> -->
+                                                    </md-card-avatar>
+                                                    <md-card-header-text>
+                                                    <span class="md-title">
+                                                        <font face="verdana" color="#FF8C00">{{::AIReplies.fullname}}</font><font face="verdana" color="#F1C40F">{{::AIReplies.username}}</font>
+                                                    </span>
+                                                    <span class="md-subhead"><font face="verdana" color="white">{{ ::AIReplies.time }}</font></span>
+                                                    </md-card-header-text>
+                                                </md-card-header> 
+                                                <md-card-content>
+                                                    <p>
+                                                    <font face="verdana" color="white">{{ ::AIReplies.msgReply }}</font>
+                                                    </p>
+                                                </md-card-content>
+                                            </div>
+                                        </md-card>
+                                        </fieldset>
+                                        </div>
+                                    </md-card>
+                                </fieldset>
+                                </div>
+                                </md-content>
+                            </md-card-content>
+                            </md-card>
+                            <!--</md-tab>
+                        </md-tabs>-->
+                    </md-content>
+                </div>
+            </div>
+        </div>        
+    </body>
+</html>

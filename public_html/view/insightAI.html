@@ -1,0 +1,84 @@
+<div ng-controller="botInsightAIController" layout="column" ng-cloak>
+    <md-toolbar class="md-hue-2">
+            <div class="md-toolbar-tools">
+                <!--<img ng-src="assets/img/default.png" class="md-avatar" alt="Twitter" height="60" /> -->
+                <h2 class="md-flex"><font face="verdana" color="yellow">auto</font></h2>
+                <h2 class="md-flex"><font face="verdana" color="black">.bot</h2></font>
+                <!--<span flex></span>
+                <span flex><timer autostart="false" countdown="countdownTimer" max-time-unit="'minute'" interval="intervals" finish-callback="callbackTimerFinished()">Time to refresh : {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+                </span>
+                <span my-current-time="format"></span> -->
+            </div>
+    </md-toolbar>   
+    <div layout="row" layout-align="center center">
+        <md-content flex="55">
+            <md-card>
+            <div ng-hide="isLoading" layout="row" layout-sm="column" layout-align="space-around">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>            
+            <md-tabs md-dynamic-height md-border-bottom>                
+                <md-tab label="Tweets & Facebook Visitor Posts">
+                    <md-content layout="row" layout-wrap layout-align="center start" style="height: 500px;" scroll-glue>
+                    <div layout="column">
+                    <!--<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                        <md-button class="md-primary" ng-click="exportTweetsReplies()" ng-href="" target="_blank">Export Tweets & Replies</md-button>
+                    </section> -->
+                    <fieldset  data-ng-repeat="dataTweetReplies in tweetReplies">        
+                        <md-card>
+                          <md-card-header>
+                            <md-card-avatar>
+                                <img ng-src="{{ ::dataTweetReplies.tweetDetails[0].avatar }}" class="md-card-image" alt="img"/>
+                            </md-card-avatar>
+                            <md-card-header-text>
+                              <span class="md-title">{{ ::dataTweetReplies.tweetDetails[0].fullname }}</span>
+                              <span class="md-subhead">{{ ::dataTweetReplies.tweetDetails[0].time}}</span>
+                            </md-card-header-text>
+                          </md-card-header>
+                          <!--<img ng-src="{{data.image}}" class="md-card-image">
+                          <md-card-title>
+                            <md-card-title-text>
+                              <span class="md-headline">Tweet</span>
+                            </md-card-title-text>
+                          </md-card-title> -->                          
+                          <md-card-content>
+                            <p>
+                              <font face="verdana">{{ ::dataTweetReplies.tweet}}</font>
+                            </p><p>&nbsp;
+                            </p>
+                          </md-card-content>                          
+                          <div layout="column">
+                              <fieldset  data-ng-repeat="AIReplies in dataTweetReplies.AIReplies" > 
+                              <md-card>
+                                  <div style="background-color: #F5F5DC;">
+                                      
+                                  <md-card-header>
+                                    <md-card-avatar>
+                                        <img ng-src="{{ ::AIReplies.avatar }}" class="md-card-image" alt="img"/>
+                                    </md-card-avatar>
+                                    <md-card-header-text>
+                                      <span class="md-title">
+                                          <font face="verdana" color="#FF8C00">{{ ::AIReplies.fullname }}</font>
+                                          <font face="verdana" color="black">{{ ::AIReplies.username }}</font>
+                                      </span>
+                                      <span class="md-subhead">{{ ::AIReplies.time }}</span>
+                                    </md-card-header-text>
+                                  </md-card-header> 
+                                  <md-card-content>
+                                    <p>
+                                      {{ ::AIReplies.msgReply }}
+                                    </p>
+                                  </md-card-content>
+                                  </div>
+                              </md-card>
+                              </fieldset>
+                            </div>
+                        </md-card>
+                    </fieldset>
+                    </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+            </md-card>
+        </md-content>
+    </div>
+</div>

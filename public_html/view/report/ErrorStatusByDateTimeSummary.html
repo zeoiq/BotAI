@@ -1,0 +1,37 @@
+                <div class="panel-body"> 
+                    <!--<div google-chart chart="iisLogErrorStatusPieChart" style="height:200px; width:100%;"></div> -->
+                    <div google-chart chart="iisLogErrorStatusByDateTimeLineChart" style="height:500px; width:100%;"></div> 
+                    <table st-table="itemIISLogErrorStatus" st-safe-src="iisLogErrorStatusByDateTimeCollection" class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th colspan="4"></th>
+                        </tr>                   
+                        <tr>
+                            <th colspan="4"><input st-search="" class="form-control" placeholder="Search ..." type="text"/></th>
+                        </tr>                   
+                        <tr>
+                            <th st-sort="timeStamp">Date Time</th>
+                            <th st-sort="status">Status Code</th>
+                            <th st-sort="noOfHits">Total of hits</th>
+                            <th></th>
+                        </tr>			
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="row in itemIISLogErrorStatus">     
+                            <td>{{row.timeStamp}}</td>
+                            <td>{{row.status}}</td>
+                            <td>{{row.noOfHits}}</td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                        </tbody>
+                        <tfoot>
+                        <tr>
+                            <td colspan="4" class="text-center">
+                                <div st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="5"></div>
+                            </td>
+                        </tr>
+                        </tfoot> 
+                    </table>
+                </div>

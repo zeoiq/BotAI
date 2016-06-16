@@ -1,0 +1,203 @@
+<div ng-controller="botTwitterController" layout="column" ng-cloak>
+    <md-toolbar class="md-warn md-hue-3">
+            <div class="md-toolbar-tools">
+                <img ng-src="assets/img/default.png" class="md-avatar" alt="Twitter" height="60" />
+                <h2 class="md-flex">Autobot</h2>
+                <span flex></span>
+                <span flex><timer autostart="false" countdown="countdownTimer" max-time-unit="'minute'" interval="intervals" finish-callback="callbackTimerFinished()">Time to refresh : {{mminutes}} minute{{minutesS}}, {{sseconds}} second{{secondsS}}.</timer>
+                </span>
+                <span my-current-time="format"></span>
+            </div>
+    </md-toolbar>
+    <md-content layout="row" flex layout-padding>  
+        
+        <div flex>
+            <a ng-click="getFB()" ng-href="" ><img ng-src="assets/img/fb-login.jpg" width="151" height="24"></a>
+            <a ng-click="getTwitter()" ng-href="" ><img ng-src="assets/img/twitter-login.png" width="151" height="24"></a>
+            <a ng-click="getIISLog()" ng-href="" ><img ng-src="assets/img/microsoft-iis.png" width="151" height="24"></a>
+            <a ng-click="getR()" ng-href="" ><img ng-src="assets/img/rstudio.png" width="151" height="24"></a>
+            <a ng-click="liveplot()" ng-href="" ><img ng-src="assets/img/linegraph.png" width="151" height="24"></a>
+            <a ng-click="insightAI()" ng-href="" ><img ng-src="assets/img/default.png" width="151" height="24"></a>
+            <!-- <md-button class="md-primary" ng-click="getFB()" ng-href="" target="_blank">FB</md-button> -->
+            <md-card>                
+                <md-card-header>
+                    <md-card-avatar>
+                        <img ng-src="assets/img/twitter.png" class="md-avatar" alt="Twitter" />
+                    </md-card-avatar>
+                    <md-card-header-text>
+                      <h4><span class="md-title">Local Bank Twitter link</span></h4>                        
+                    </md-card-header-text>
+                </md-card-header>
+                <md-card-content >                          
+                        <md-content class="md-padding autocomplete" layout="column" style="height: 550px"; ng-init="getTweetsLink()">
+                        <md-list>   
+                          <md-list-item class="md-3-line" ng-repeat="item in itemTwitters" ng-click="getTweet(item, $event)">
+                            <div layout="row">
+                            <img ng-src="assets/img/twitterIcon.png" class="md-avatar" alt="{{ ::item.tweetName }}" />
+                            <div class="md-list-item-text compact" layout="column">
+                                <h4>{{ ::item.tweetName }}</h4>
+                                <p><a ng-href="{{ ::item.linkTweets }}">{{ ::item.linkTweets }}</a></p>
+                                <p><a ng-href="{{ ::item.linkTweetsReplies }}">{{ ::item.linkTweetsReplies }}</a></p>
+                            </div>
+                            <div class="timeline-badge3">
+                            <a class="btn btn-sm btn-primary" ng-click="editTwitterLink(twit, item.id, $event)">
+                                Edit
+                            </a>
+                            <a class="btn btn-sm btn-danger" ng-click="deleteTwitterLink(item.id, $event)">
+                                Delete
+                            </a>
+                            </div>
+                            <!--<md-button class="md-primary" ng-click="doSecondaryAction($event)">Edit</md-button>
+                            <md-button class="md-warn" ng-click="doSecondaryAction($event)">Delete</md-button> -->
+                            </div>
+                          </md-list-item>
+                        </md-list>
+                        </md-content>              
+                </md-card-content>
+            </md-card>
+            <md-card>           
+                <md-card-content>
+                    <!--<button ng-click="startClock()" ng-disabled="timerRunning">Start Timers</button>
+                    <button ng-click="stopClock()" ng-disabled="!timerRunning">Stop Timers</button>
+                    <button ng-click="resetClock()">Reset Timers</button> -->
+                    <div layout="column" layout-sm="column">
+                        <md-input-container flex>
+                            <label>Refresh Interval (Mins)</label>
+                            <md-select ng-model="userState" ng-change="changeInterval(state.abbrev)">
+                              <md-option ng-repeat="state in states" value="{{ ::state.abbrev }}">
+                                {{ ::state.abbrev }}
+                              </md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container ng-hide="true" flex>
+                          <label>Twitter ID</label>
+                          <input ng-model="twit.id" disabled>
+                        </md-input-container>
+                        <md-input-container flex>
+                          <label>Twitter Name</label>
+                          <input ng-model="twit.twitterName">
+                        </md-input-container>
+                        <md-input-container flex>
+                          <label>Tweets Link</label>
+                          <input ng-model="twit.tweetsLink">
+                        </md-input-container>
+                        <md-input-container flex>
+                          <label>Tweets &amp; Replies link</label>
+                          <input ng-model="twit.tweetsRepliesLink">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <md-button class="md-primary" ng-click="addTweetsLink(twit)" ng-hide="!isAdd" ng-href="" target="_blank">Add Link</md-button>
+                            <md-button class="md-primary" ng-click="updateTwitterLink(twit)" ng-hide="isAdd" ng-href="" target="_blank">Update Link</md-button>
+                            <md-button class="md-primary" ng-click="cancelTwitterLink()" ng-href="" target="_blank">Cancel Link</md-button>
+                        </md-input-container>
+                    </div> 
+                </md-card-content>
+            </md-card>            
+        </div>
+        <div flex>
+        <md-content>
+            <md-card>
+            <div ng-hide="isLoading" layout="row" layout-sm="column" layout-align="space-around">
+                <md-progress-linear md-mode="indeterminate"></md-progress-linear>
+            </div>
+            <md-tabs md-dynamic-height md-border-bottom>
+                <md-tab label="Tweets">
+                    <md-content layout="row" layout-wrap layout-align="center start">
+                    <div layout="column">
+                    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                        <md-button class="md-primary" ng-click="exportTweets()" ng-href="" target="_blank">Export Tweets</md-button>
+                    </section>
+                    <fieldset  data-ng-repeat="data in tweet" >        
+                        <md-card>
+                          <md-card-header>
+                            <md-card-avatar>
+                                <img ng-src="{{ ::data.tweetDetails[0].avatar }}" class="md-card-image" alt="img"/>
+                            </md-card-avatar>
+                            <md-card-header-text>
+                              <span class="md-title">{{ ::data.tweetDetails[0].fullname }} - {{ ::data.tweetDetails[0].username }}</span>
+                              <span class="md-subhead">{{ ::data.tweetDetails[0].time}}</span>
+                            </md-card-header-text>
+                          </md-card-header>
+                          <img ng-src="{{ ::data.image }}" class="md-card-image">
+                          <!--<md-card-title>
+                            <md-card-title-text>
+                              <span class="md-headline">Tweet</span>
+                            </md-card-title-text>
+                          </md-card-title> -->
+                          <md-card-content>
+                            <p>
+                              {{ ::data.tweet }}
+                            </p>
+                          </md-card-content>
+                        </md-card>
+                    </fieldset>
+                    </div>
+                    </md-content>
+                </md-tab>
+                <md-tab label="Tweets & Replies">
+                    <md-content layout="row" layout-wrap layout-align="center start">
+                    <div layout="column">
+                    <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+                        <md-button class="md-primary" ng-click="exportTweetsReplies()" ng-href="" target="_blank">Export Tweets & Replies</md-button>
+                    </section>
+                    <fieldset  data-ng-repeat="dataTweetReplies in tweetReplies">        
+                        <md-card>
+                          <md-card-header>
+                            <md-card-avatar>
+                                <img ng-src="{{ ::dataTweetReplies.tweetDetails[0].avatar }}" class="md-card-image" alt="img"/>
+                            </md-card-avatar>
+                            <md-card-header-text>
+                              <span class="md-title">{{ ::dataTweetReplies.tweetDetails[0].fullname }} - {{ ::dataTweetReplies.tweetDetails[0].username }}</span>
+                              <span class="md-subhead">{{ ::dataTweetReplies.tweetDetails[0].time}}</span>
+                            </md-card-header-text>
+                          </md-card-header>
+                          <!--<img ng-src="{{data.image}}" class="md-card-image">
+                          <md-card-title>
+                            <md-card-title-text>
+                              <span class="md-headline">Tweet</span>
+                            </md-card-title-text>
+                          </md-card-title> -->                          
+                          <md-card-content>
+                            <p>
+                              {{ ::dataTweetReplies.tweet}}
+                            </p><p>&nbsp;
+                            </p>
+                            <div layout="row">
+                                <!--<a href="" ng-click="getTweetsReplies(dataTweetReplies.hideCvstLink, dataTweetReplies)" ng-hide="{{dataTweetReplies.gotConversation}}"><p>View Conversation</a></p> -->
+                                <md-button ng-click="getTweetsReplies(dataTweetReplies.hideCvstLink, dataTweetReplies)" ng-href="" target="_blank" ng-hide="{{ ::dataTweetReplies.gotConversation }}">View Conversation</md-button>
+                                <md-button class="md-primary" ng-click="exportConversation(dataTweetReplies)" ng-href="" target="_blank" ng-hide="{{ ::dataTweetReplies.gotConversation }}">Export Conversation</md-button>
+                            </div>
+                          </md-card-content>                          
+                          <div layout="column">
+                              <fieldset  data-ng-repeat="dataTweetsReplies in dataTweetReplies.tweetsReplies" > 
+                              <md-card>
+                                  <div style="background-color: #ECEFF1;">
+                                  <md-card-header>
+                                    <md-card-avatar>
+                                        <img ng-src="{{ ::dataTweetsReplies.tweetDetails[0].avatar }}" class="md-card-image" alt="img"/>
+                                    </md-card-avatar>
+                                    <md-card-header-text>
+                                      <span class="md-title">{{ ::dataTweetsReplies.tweetDetails[0].fullname }} - {{ ::dataTweetsReplies.tweetDetails[0].username }}</span>
+                                      <span class="md-subhead">{{ ::dataTweetsReplies.tweetDetails[0].time }}</span>
+                                    </md-card-header-text>
+                                  </md-card-header> 
+                                  <md-card-content>
+                                    <p>
+                                      {{ ::dataTweetsReplies.tweet }}
+                                    </p>
+                                  </md-card-content>
+                                      </div>
+                              </md-card>
+                              </fieldset>
+                            </div>
+                        </md-card>
+                    </fieldset>
+                    </div>
+                    </md-content>
+                </md-tab>
+            </md-tabs>
+            </md-card>
+        </md-content>
+        </div>
+    </md-content> 
+</div>
