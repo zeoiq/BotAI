@@ -11,7 +11,7 @@
         $scope.isLoading = true;
     
         $scope.userState = 1;
-        $scope.states = ('0 0.1 0.2 1 2 3 4 5 10 15 20 25 30').split(' ').map(function (state) { return { abbrev: state }; });
+        $scope.states = ('0 0.2 0.3 1 2 3 4 5 10 15 20 25 30').split(' ').map(function (state) { return { abbrev: state }; });
 
         $scope.intervals = 1000;
         $scope.countdownTimer = $scope.userState * 60;

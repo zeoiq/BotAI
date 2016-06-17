@@ -77,7 +77,7 @@ module.exports = function(app, connections) {
         //console.log(subjects + '  : ' + message); 
         smtpTransport.sendMail({
                 from: "no-reply@insightAI.com", // sender address
-                to: "canmmy.ng@macrokiosk.com, zeroiq7@gmail.com, km.teh@macrokiosk.com", // comma separated list of receivers
+                to: "canmmy.ng@macrokiosk.com, km.teh@macrokiosk.com", // comma separated list of receivers
                 subject: "" + subjects, // Subject line
                 text: "" + message // plaintext body
             }, function(error, response){
