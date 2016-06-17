@@ -9,8 +9,8 @@ module.exports = {
     "callback_url"          :     apiURL + "/auth/facebook/callback",
 
 	// the database url to connect
-	//dbUrl : 'mongodb://autobot:autobot@ds061464.mongolab.com:61464/autobotdb'
+	dbUrl : 'mongodb://autobot:autobot@ds061464.mongolab.com:61464/autobotdb'
     //dbUrl : 'mongodb://172.16.20.73/autobotdb'
     //dbUrl : 'mongodb://192.168.1.71/autobotdb'
-    dbUrl : 'mongodb://localhost/autobotdb'
+    //dbUrl : 'mongodb://localhost/autobotdb'
 };

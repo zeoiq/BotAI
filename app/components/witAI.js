@@ -17,7 +17,7 @@ module.exports = function(app, connections) {
     const sessions = {};
     //console.log('usage: ' + WIT_TOKEN);
 
-    function firstEntityValue (entities, entity) {
+    const firstEntityValue = (entities, entity) => {
         const val = entities && entities[entity] &&
             Array.isArray(entities[entity]) &&
             entities[entity].length > 0 &&
@@ -27,7 +27,7 @@ module.exports = function(app, connections) {
                 return null;
             }
             return typeof val === 'object' ? val.value : val;
-    }
+    };
 
     const actions = {
         say(sessionId, context, message, cb) {
